@@ -1,0 +1,1 @@
+/* Reusable Feed which gets objects to display as props */
