@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import moment from 'moment';
+import Loader from '../ui/Loader'
 
 const SeedDetails = (props) => {
     const { seed } = props;
@@ -25,7 +26,7 @@ const SeedDetails = (props) => {
     } else {
         return (
             <div className="container center">
-                <p>Loading seed...</p>
+                <Loader />
             </div>
         )
     }
