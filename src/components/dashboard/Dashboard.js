@@ -35,7 +35,7 @@ export default compose(
     connect(mapStateToProps),
     /* Connects Component to Firestore and listens to the given collection */
     firestoreConnect([
-        { collection: 'seeds' },
-        { collection: 'notifications', limit: 3 }
+        { collection: 'seeds', orderBy: ['createdAt', 'desc'] },
+        { collection: 'notifications', limit: 3, orderBy: ['time', 'desc'] }
     ])
 )(Dashboard);
