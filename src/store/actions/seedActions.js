@@ -3,10 +3,14 @@ export const createSeed = (seed) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         // Async call to database
         const firestore = getFirestore();
+        const profile = getState().firebase.profile;
+        const authorId = getState().firebase.auth.uid;
+
         firestore.collection('seeds').add({
             ...seed,
-            authorUserName: 'HensO',
-            authorId: 1234,
+            authorFirstName: profile.firstName,
+            authorLastName: profile.lastName, 
+            authorId: authorId,
             createdAt: new Date()
         }).then(() => {
             dispatch({ type: 'CREATE_SEED', seed: seed });

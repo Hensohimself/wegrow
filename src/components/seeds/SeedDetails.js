@@ -15,7 +15,7 @@ const SeedDetails = (props) => {
                         <p>{seed.content}</p>
                     </div>
                     <div className="card-action grey lighten-4 grey-text">
-                        <div>Posted by {seed.authorUserName}</div>
+                        <div>Posted by {seed.authorFirstName} {seed.authorLastName}</div>
                         <div>3rd May, 4pm</div>
                     </div>
                 </div>
