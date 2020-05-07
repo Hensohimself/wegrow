@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 const SeedSummary = ({ seed }) => {
     return (
@@ -6,7 +7,7 @@ const SeedSummary = ({ seed }) => {
             <div className="card-content grey-text text-darken-3">
                 <span className="card-title">{seed.title}</span>
                 <p>Posted by { seed.authorFirstName } {seed.authorLastName}</p>
-                <p className="grey-text">3rd May, 3pm</p>
+                <p className="grey-text">{moment(seed.createdAt.toDate()).calendar()}</p>
             </div>
         </div>
     )
