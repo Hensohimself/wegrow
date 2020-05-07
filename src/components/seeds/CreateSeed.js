@@ -18,6 +18,7 @@ class CreateSeed extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.createSeed(this.state);
+        this.props.history.push('/');
     }
 
     render() {
