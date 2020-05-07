@@ -12,6 +12,12 @@ import { ReactReduxFirebaseProvider, getFirebase } from "react-redux-firebase";
 import fbConfig from "./config/fbConfig";
 import firebase from "firebase/app";
 
+const profileSpecificProps = {
+  userProfile: 'users',
+  useFirestoreForProfile: true,
+  enableRedirectHandling: false,
+  resetBeforeLogin: false
+}
 
 const store = createStore(
   rootReducer,
@@ -23,7 +29,7 @@ const store = createStore(
 
 const rrfProps = {
   firebase,
-  config: fbConfig,
+  config: profileSpecificProps,
   dispatch: store.dispatch,
   createFirestoreInstance
 };
