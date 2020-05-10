@@ -1,6 +1,6 @@
 import React from 'react';
 import SeedSummary from './SeedSummary';
-import { Link } from 'react-router-dom';
+import { Card } from 'react-bootstrap';
 
 const SeedList = ({ seeds }) => {
     return (
@@ -8,10 +8,9 @@ const SeedList = ({ seeds }) => {
             {/* If there is a seeds than map through it, if not, dont bother. */}
             {seeds && seeds.map(seed => {
                 return (
-                    <Link to={'/seed/' + seed.id} key={seed.id}>
+                    <Card style={{ width: '350px', margin: '30px' }} key={seed.id}>
                         <SeedSummary seed={seed} />
-                    </Link>
-
+                    </Card>
                 )
             })}
         </div>

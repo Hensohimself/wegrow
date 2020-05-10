@@ -1,15 +1,28 @@
 import React from 'react';
-import moment from 'moment';
+import { Link } from 'react-router-dom';
+import { Card, Button, Row, Col } from 'react-bootstrap';
 
 const SeedSummary = ({ seed }) => {
     return (
-        <div className="card z-depth-0 seed-summary">
-            <div className="card-content grey-text text-darken-3">
-                <span className="card-title">{seed.title}</span>
-                <p>Posted by { seed.authorFirstName } {seed.authorLastName}</p>
-                <p className="grey-text">{moment(seed.createdAt.toDate()).calendar()}</p>
-            </div>
-        </div>
+        <Card>
+            <Row className="align-items-center">
+                <Col xs={8}>
+                    <Link to={'/seed/' + seed.id} className="btn">
+                        <Card.Body>
+                            <blockquote className="blockquote mb-0">
+                                {seed.title}
+                            </blockquote>
+                        </Card.Body>
+                    </Link>
+                </Col>
+                <Col xs={1}>
+                    1
+                </Col>
+                <Col xs={3}>
+                    <Button variant="secondary">vote</Button>
+                </Col>
+            </Row>
+        </Card>
     )
 }
 export default SeedSummary;

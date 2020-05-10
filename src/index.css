@@ -9,7 +9,7 @@ body {
   min-height: 100%;
 }
 
-form{
+form, .seed-container{
   padding: 20px;
   margin: 60px;
 }
@@ -25,3 +25,33 @@ textarea.materialize-textarea:focus:not([readonly]){
   border-color: black;
   box-shadow: none;
 }
+
+.login-page{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+}
+
+.login-form-container{
+  padding: 2em;
+  max-width: 350px;
+  background-color: #fafafa;
+  border: 1px solid lightgray
+}
+
+.h-divider {
+  margin-top:5px;
+  margin-bottom:5px;
+  height:1px;
+  width:100%;
+  border-top:1px solid lightgray;
+}
+
+.notification-card{
+  margin: 2em;
+  width: '350px';
+  margin: '30px';
+}
+

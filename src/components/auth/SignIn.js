@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signIn } from '../../store/actions/authActions'
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import Loader from '../ui/Loader';
+import { Form, Button, Container, Alert } from 'react-bootstrap';
 
 class SignIn extends Component {
     state = {
@@ -29,25 +30,34 @@ class SignIn extends Component {
             if (auth.uid) return <Redirect to='/' />
 
             return (
-                <div className="container">
-                    <form onSubmit={this.handleSubmit} className="white">
-
-                        <h5 className="grey-text text-darken-3">Sign In</h5>
-                        <div className="input-field">
-                            <label htmlFor="email">Email</label>
-                            <input type="email" id="email" onChange={this.handleChange} />
-                        </div>
-                        <div className="input-field">
-                            <label htmlFor="password">Password</label>
-                            <input type="password" id="password" onChange={this.handleChange} />
-                        </div>
-                        <div className="input-field">
-                            <button className="btn pink lighten-1 z-depth-0">Login</button>
-                            <div className="red-text center">
-                                {authError ? <p>{authError}</p> : null}
-                            </div>
-                        </div>
-                    </form>
+                <div className="login-page">
+                    <Form>
+                        <Container className="login-form-container">
+                            <Form.Group controlId="formGroupHeader">
+                                <h1 className="text-center">Login</h1>
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Control id="email" type="email" placeholder="Email Address" onChange={this.handleChange} />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Control id="password" type="password" placeholder="Password" onChange={this.handleChange} />
+                            </Form.Group>
+                            <Form.Group controlId="formGroupLogin">
+                                <Button variant="primary" onClick={this.handleSubmit} block>Login</Button>
+                                {authError ? <Alert variant="danger">{authError}</Alert> : null}
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Group controlId="formGroupForgot" className="text-center">
+                                    <Button href='#' variant="link">Forgot your password?</Button>
+                                </Form.Group>
+                                <div className="h-divider"></div>
+                            </Form.Group>
+                            <Form.Group controlId="formGroupNoAccount" className="text-center">
+                                <Form.Label>Don't have an account?</Form.Label>
+                                <Link to='/signup' >Sign Up</Link>
+                            </Form.Group>
+                        </Container>
+                    </Form>
                 </div>
             )
         } else {

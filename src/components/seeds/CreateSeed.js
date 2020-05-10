@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSeed } from '../../store/actions/seedActions';
+import { Button, Form, Container } from 'react-bootstrap';
 
 class CreateSeed extends Component {
 
@@ -23,23 +24,18 @@ class CreateSeed extends Component {
 
     render() {
         return (
-            <div className="container">
-                <form onSubmit={this.handleSubmit} className="white">
-
-                    <h5 className="grey-text text-darken-3">Plant Seed</h5>
-                    <div className="input-field">
-                        <label htmlFor="title">Title</label>
-                        <input type="text" id="title" onChange={this.handleChange} />
-                    </div>
-                    <div className="input-field">
-                        <label htmlFor="content">Seed Content</label>
-                        <textarea className="materialize-textarea" id="content" onChange={this.handleChange}></textarea>
-                    </div>
-                    <div className="input-field">
-                        <button className="btn pink lighten-1 z-depth-0">Create</button>
-                    </div>
-                </form>
-            </div>
+            <Container>
+                <Form onSubmit={this.handleSubmit}>
+                    <h1>Plant a Seed</h1>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Control id="title" type="text" placeholder="Enter catchy Seed Title" onChange={this.handleChange} />
+                    </Form.Group>
+                    <Form.Control as="textarea" id="content" placeholder="Content" rows="3" onChange={this.handleChange} />
+                    <Button variant="primary" type="submit" block>
+                        Create
+                        </Button>
+                </Form>
+            </Container>
         )
     }
 }

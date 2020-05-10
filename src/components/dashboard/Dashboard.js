@@ -8,15 +8,16 @@ import { compose } from 'redux';
 class Dashboard extends Component {
     render() {
         const { seeds, notifications } = this.props;
-
         return (
-            <div className="dashboard container">
-                <div className="row">
-                    <div className="col s12 m6">
-                        <SeedList seeds={seeds} />
-                    </div>
-                    <div className="col s12 m5 offset-m1">
-                        <Notifications notifications={notifications} />
+            <div>
+                <div className="dashboard container">
+                    <div className="row">
+                        <div className="col s12 m6">
+                            <Notifications notifications={notifications} />
+                        </div>
+                        <div className="col s12 m5 offset-m1">
+                            <SeedList seeds={seeds} />
+                        </div>
                     </div>
                 </div>
             </div>

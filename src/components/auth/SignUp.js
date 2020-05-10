@@ -3,6 +3,8 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Loader from '../ui/Loader';
 import { signUp } from '../../store/actions/authActions';
+import { Button, Form, Container, Alert } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class SignUp extends Component {
     state = {
@@ -31,32 +33,35 @@ class SignUp extends Component {
             if (auth.uid) return <Redirect to='/' />
 
             return (
-                <div className="container">
-                    <form onSubmit={this.handleSubmit} className="white">
-                        <h5 className="grey-text text-darken-3">Sign Up</h5>
-                        <div className="input-field">
-                            <label htmlFor="email">Email</label>
-                            <input type="email" id="email" onChange={this.handleChange} />
-                        </div>
-                        <div className="input-field">
-                            <label htmlFor="firstName">First Name</label>
-                            <input type="text" id="firstName" onChange={this.handleChange} />
-                        </div>
-                        <div className="input-field">
-                            <label htmlFor="lastName">Last Name</label>
-                            <input type="text" id="lastName" onChange={this.handleChange} />
-                        </div>
-                        <div className="input-field">
-                            <label htmlFor="password">Password</label>
-                            <input type="password" id="password" onChange={this.handleChange} />
-                        </div>
-                        <div className="input-field">
-                            <button className="btn pink lighten-1 z-depth-0">Sign up</button>
-                            <div className="red-text center">
-                                {authError ? <p>{authError}</p> : null}
-                            </div>
-                        </div>
-                    </form>
+                <div className="login-page">
+                    <Form>
+                        <Container className="login-form-container">
+                            <Form.Group controlId="formGroupHeader">
+                                <h1 className="text-center">Sign Up</h1>
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Control id="email" type="email" placeholder="Email Address" onChange={this.handleChange} />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Control id="firstName" type="text" placeholder="First Name" onChange={this.handleChange} />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Control id="lastName" type="text" placeholder="Last Name" onChange={this.handleChange} />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Control id="password" type="password" placeholder="Password" onChange={this.handleChange} />
+                            </Form.Group>
+                            <Form.Group controlId="formGroupLogin">
+                                <Button variant="primary" onClick={this.handleSubmit} block>Sign Up</Button>
+                                {authError ? <Alert variant="danger">{authError}</Alert> : null}
+                                <div className="h-divider"></div>
+                            </Form.Group>
+                            <Form.Group controlId="formGroupNoAccount" className="text-center">
+                                <Form.Label>Already have an account?</Form.Label>
+                                <Link to='/signin'>Login</Link>
+                            </Form.Group>
+                        </Container>
+                    </Form>
                 </div>
             )
 
@@ -78,7 +83,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        signUp : (newUser) => dispatch(signUp(newUser))
+        signUp: (newUser) => dispatch(signUp(newUser))
     }
 }
 
